@@ -127,4 +127,130 @@ const sumThree = function (n1, n2, n3 = 0) {
   alert(total);
 };
 
+// qui non c'è total :(
+
 sumThree(2, 6);
+
+// VALORI DI RITORNO DI UNA FUNZIONE
+// Una funzione, opzionalmente, può RITORNARE un valore ALLA FINE della sua esecuzione.
+// Se una funzione RITORNA un valore, sarà possibile mantenere quel risultato anche al
+// di FUORI della funzione, una volta che la sua esecuzione sarà ormai terminata.
+
+const anotherSum = function (n1, n2) {
+  const result = n1 + n2;
+  return result;
+};
+
+const r = anotherSum(7, 8);
+console.log("R VALE", r); // 15
+
+// creiamo ora un po' di funzioncine separate per effettuare delle op. matematiche
+
+const sommaDueNumeri = function (n1, n2) {
+  const risultato = n1 + n2;
+  return risultato;
+};
+
+const arrotonda = function (numero) {
+  const valoreArrotondato = Math.floor(numero); // abbatte all'interno più basso
+  return valoreArrotondato;
+};
+
+const moltiplicaPerTre = function (numero) {
+  const valoreMoltiplicato = numero * 3;
+  return valoreMoltiplicato;
+};
+
+let valore = sommaDueNumeri(5.65, 9.99); // valore è diventato 15.64
+valore = arrotonda(valore); // valore ora vale 15
+valore = moltiplicaPerTre(valore); // valore ora vale 45
+console.log("Il risultato delle mie operazioni è", valore);
+
+// l'esecuzione di una funzione con un valore di ritorno si comporta
+// esattamente come il valore di ritorno stesso!
+console.log(moltiplicaPerTre(7) + 100);
+
+const verificaEta = function (eta) {
+  if (eta >= 18) {
+    return "maggiorenne";
+  } else {
+    return "minorenne";
+  }
+};
+
+console.log(
+  "Il controllo della mia età ha portato un risultato: " + verificaEta(20)
+);
+
+console.log(
+  "Il controllo della mia età ha portato un risultato: " + verificaEta(17)
+);
+
+// funzione che calcola un numero di un D6 e lo ritorna
+const lanciaDado = function () {
+  const lancio = Math.ceil(Math.random() * 6);
+  return lancio;
+};
+
+console.log("Tiro il dado: è uscito " + lanciaDado());
+console.log("Tiro il dado: è uscito " + lanciaDado());
+console.log("Tiro il dado: è uscito " + lanciaDado());
+
+const x = "ciao";
+x.toUpperCase(); // 'CIAO'
+x.length; // SENZA tonde! perchè è una PROPRIETÀ di x, NON UN METODO
+
+// ESERCIZI
+// 1) scrivi una funzione che ritorni true se un numero fornito come parametro è maggiore di 10, false altrimenti
+
+const countNumber = function (n) {
+  if (n > 10) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+countNumber(50); // true
+
+// 2) scrivi una funzione che accetti due stringhe come parametri, le concateni insieme e ritorni il risultato senza la prima e l'ultima lettera
+
+const concatStrings = function (str1, str2) {
+  let result = str1 + str2;
+  //   let result = str1.concat(str2)
+  result = result.slice(1, result.length - 1);
+  return result;
+};
+
+console.log(concatStrings("Hello", "World")); // 'elloWorl'
+
+// 3) // scrivi una funzione che accetti un numero come parametro: se è pari, la funzione deve ritornare questo numero moltiplicato per 3, se è dispari lo deve tornare sottratto di 5
+
+const calcolo = function (n) {
+  if (n % 2 === 0) {
+    // numero pari
+    return n * 3;
+  } else {
+    // numero dispari
+    return n - 5;
+  }
+};
+
+console.log(calcolo(10)); // 30
+console.log(calcolo(51)); // 46
+
+// 4) scrivi una funzione che esegua per un numero di volte fornito come parametro un'estrazione di un numero casuale (da 1 a 6), tornando la somma di tutti i numeri estratti
+
+const tiraMolteVolte = function (numeroVolte) {
+  let somma = 0; // parto da 0, si incrementerà ad ogni lancio del dado
+  for (let i = 0; i < numeroVolte; i++) {
+    // dobbiamo lanciare un dado tutte queste volte
+    somma = somma + lanciaDado(); // Math.ceil(Math.random() * 6)
+  }
+  return somma;
+};
+
+console.log(tiraMolteVolte(4));
+console.log(tiraMolteVolte(5));
+console.log(tiraMolteVolte(800));
+console.log(tiraMolteVolte(lanciaDado()));
