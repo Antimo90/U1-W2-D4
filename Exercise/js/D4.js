@@ -110,12 +110,29 @@ console.log(check3and7(31));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const reverseString = function (string) {
+  return string.split("").reverse().join("");
+};
+console.log(reverseString("EPICODE"));
 /* ESERCIZIO 8
  Scrivi una funzione di nome "upperFirst", che riceve come parametro una stringa formata da diverse parole.
  La funzione deve rendere maiuscola la prima lettera di ogni parola contenuta nella stringa.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const upperFirst = function (stringLong) {
+  const splitString = stringLong.split(" ");
+  for (let i = 0; i < splitString.length; i++) {
+    const wordCurrent = splitString[i];
+    if (wordCurrent.length > 0) {
+      const firstCapitalLetter = wordCurrent[0].toUpperCase();
+      const restOfTheWord = wordCurrent.slice(1);
+      splitString[i] = firstCapitalLetter + restOfTheWord;
+    }
+  }
+  return splitString.join(" ");
+};
+console.log(upperFirst("ciao come state spero tutto bene"));
 
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
@@ -123,9 +140,25 @@ console.log(check3and7(31));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-
+const cutString = function (stringToCut) {
+  if (stringToCut.length <= 2) {
+    return "";
+  }
+  const result = stringToCut.slice(1, stringToCut.length - 1);
+  return result;
+};
+console.log(cutString("SUPERCALIFRA"));
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const giveMeRandom = function (number) {
+  const arrayNumber = [];
+  for (let i = 0; i < number; i++) {
+    const randomNumbers = Math.floor(Math.random() * 11);
+    arrayNumber.push(randomNumbers);
+  }
+  return arrayNumber;
+};
+console.log(giveMeRandom(12));
