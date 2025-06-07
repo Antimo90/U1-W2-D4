@@ -33,7 +33,7 @@ const checkArray = function (arr) {
   return sumGreaterThanFive;
 };
 
-console.log(checkArray(giveMeRandom(10, 20)));
+// console.log(checkArray(giveMeRandom(10, 20)));
 
 /* EXTRA 2
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
@@ -41,19 +41,66 @@ console.log(checkArray(giveMeRandom(10, 20)));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const shoppingCart = [
+  { price: 10.0, name: "Scarpe da ginnastica", id: 101, quantity: 2 },
+  { price: 5.5, name: "Calzini sportivi", id: 102, quantity: 4 },
+  { price: 25.0, name: "T-shirt tecnica", id: 103, quantity: 1 },
+  { price: 3.2, name: "Bottiglia d'acqua", id: 104, quantity: 3 },
+];
+const shoppingCartTotal = function (cart) {
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
+    const itemCost = item.price * item.quantity;
+    total += itemCost;
+  }
+  return total;
+};
+
+// console.log("Totale del carrello:", shoppingCartTotal(shoppingCart));
 
 /* EXTRA 3
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "addToShoppingCart" che riceve un nuovo oggetto dello stesso tipo, lo aggiunge a "shoppingCart" e ritorna il nuovo numero totale degli elementi.
 */
-
 /* SCRIVI QUI LA TUA RISPOSTA */
+const addToShoppingCart = function (newProduct) {
+  shoppingCart.push(newProduct);
+  return shoppingCart.length;
+};
+const prodottoA = { price: 100, name: "Smartphone", id: 1, quantity: 1 };
+const prodottoB = { price: 20, name: "Cover", id: 2, quantity: 2 };
+const prodottoC = { price: 5, name: "Cavo USB", id: 3, quantity: 3 };
+
+const count1 = addToShoppingCart(prodottoA);
+// console.log("Dopo aver aggiunto lo Smartphone, elementi nel carrello:", count1); // Output: 1
+// console.log("Stato attuale del carrello:", shoppingCart);
+const count2 = addToShoppingCart(prodottoB);
+// console.log("Dopo aver aggiunto la Cover, elementi nel carrello:", count2); // Output: 2
+// console.log("Stato attuale del carrello:", shoppingCart);
+const count3 = addToShoppingCart(prodottoC);
+// console.log("Dopo aver aggiunto il Cavo USB, elementi nel carrello:", count3); // Output: 3
+// console.log("Stato attuale del carrello:", shoppingCart);
 
 /* EXTRA 4
- Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
- Crea una funzione chiamata "maxShoppingCart" che riceve l'array "shoppingCart" e ritorna l'oggetto più costoso in esso contenuto.
+  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
+  Crea una funzione chiamata "maxShoppingCart" che riceve l'array "shoppingCart" e ritorna l'oggetto più costoso in esso contenuto.
 */
+const maxShoppingCart = function (cart) {
+  if (cart.length === 0) {
+    return "vuoto";
+  }
+  let mostExpensiveItem = cart[0];
+  for (let i = 0; i < cart.length; i++) {
+    const currentItem = cart[i];
+    if (currentItem.price > mostExpensiveItem.price) {
+      mostExpensiveItem = currentItem;
+    }
+  }
+  return mostExpensiveItem;
+};
 
+console.log(maxShoppingCart(shoppingCart));
 /* SCRIVI QUI LA TUA RISPOSTA */
 
 /* EXTRA 5
@@ -62,14 +109,39 @@ console.log(checkArray(giveMeRandom(10, 20)));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const latestShoppingCart = function (cart) {
+  if (cart.length === 0) {
+    return "vuoto";
+  } else {
+    return cart[cart.length - 1];
+  }
+};
 
+console.log(latestShoppingCart(shoppingCart));
 /* EXTRA 6
  Crea una funzione chiamata "loopUntil" che riceve un numero intero come parametro con valore tra 0 e 9.
  La funzione è composta da un ciclo che stampa un numero casuale tra 0 e 9 finchè il numero casuale non è maggiore di x per tre volte di fila.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-
+const loopUntil = function (x) {
+  let consecutiveSuccesses = 0;
+  do {
+    const randomNumber = Math.floor(Math.random() * 10);
+    console.log(randomNumber);
+    if (randomNumber > x) {
+      consecutiveSuccesses++;
+      console.log(consecutiveSuccesses);
+    } else {
+      consecutiveSuccesses = 0;
+      console.log(consecutiveSuccesses);
+    }
+  } while (consecutiveSuccesses < 3);
+  console.log("Ciclo terminato è Il numero casuale è stato maggiore di ", x);
+};
+// loopUntil(5);
+loopUntil(2);
+// loopUntil(8);
 /* EXTRA 7
 Crea una funzione chiamata "average" che riceve un array come parametro e ne ritorna la media aritmetica. La funzione salta automaticamente i valori non numerici nell'array.
 */
