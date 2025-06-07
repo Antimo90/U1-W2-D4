@@ -69,14 +69,41 @@ console.log(boundary(60));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const epify = function (string) {
+  const epicode = "Epicode";
+  if (string.startsWith("Epicode")) {
+    return string;
+  } else {
+    const newString = "Epicode" + string;
+    return newString;
+  }
+};
 
+console.log(epify("Benvenuti"));
+console.log(epify("Epicode è fantasico"));
 /* ESERCIZIO 6
  Scrivi una funzione di nome "check3and7" che accetta un numero positivo come parametro. La funzione deve controllare che il parametro sia un multiplo
  di 3 o di 7. (Suggerimento: usa l'operatore modulo)
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-
+const check3and7 = function (numb) {
+  if (numb % 2 === 0) {
+    if (numb % 3 === 0) {
+      return numb + " Accettato ed è un multiplo di 3";
+    } else if (numb % 7 === 0) {
+      return numb + " Accettato ed è un multiplo di 7";
+    } else {
+      return numb + " Accettato ma non è multiplo";
+    }
+  } else {
+    return numb + " Dispari";
+  }
+};
+console.log(check3and7(2));
+console.log(check3and7(12));
+console.log(check3and7(28));
+console.log(check3and7(31));
 /* ESERCIZIO 7
  Scrivi una funzione di nome "reverseString", il cui scopo è invertire una stringa fornita come parametro (es. "EPICODE" --> "EDOCIPE")
 */
